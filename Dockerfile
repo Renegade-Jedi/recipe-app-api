@@ -11,7 +11,8 @@ WORKDIR /app
 EXPOSE 8000
 RUN pip install --requirement /tmp/requirements.txt
 ARG DEV=true
-
+RUN apk add --no-cache icu-libs
+RUN apk add --no-cache icu-data-full
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client jpeg-dev && \
