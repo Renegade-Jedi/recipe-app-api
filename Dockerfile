@@ -10,6 +10,9 @@ WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=true
+RUN rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/*
+RUN apk update
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client && \
